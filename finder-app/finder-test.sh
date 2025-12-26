@@ -2,7 +2,7 @@
 #!/bin/sh
 # Tester script for assignment 1 and assignment 2
 # Author: Siddhant Jajoo
-# Modificado por Alfonso: limpia, compila nativo y usa la utilidad C 'writer'
+# Modificado por Alfonso: usa la utilidad C 'writer' sin compilar aquí (A3 part 1)
 
 set -e
 set -u
@@ -41,7 +41,6 @@ assignment=$(cat ../conf/assignment.txt)
 if [ "${assignment}" != "assignment1" ]
 then
     mkdir -p "${WRITEDIR}"
-
     if [ -d "${WRITEDIR}" ]
     then
         echo "${WRITEDIR} created"
@@ -50,17 +49,10 @@ then
     fi
 fi
 
-# === NUEVO: limpiar artefactos de compilación y compilar nativo ===
-echo "Removing old writer build artifacts and compiling writer natively"
-# Nos aseguramos de ejecutar make dentro de finder-app
-# (este script está en finder-app/, así que el Makefile está en el mismo dir)
-make clean
-# Compilación nativa: NO pasamos CROSS_COMPILE
-make
-
-# Verificación de binario
+# *** IMPORTANTE: NO compilar en Assignment 3 Part 1 ***
+# Verificación suave de binario existente
 if [ ! -x "./writer" ]; then
-    echo "failed: writer binary not found or not executable after build"
+    echo "failed: writer binary not found or not executable. Build it separately (Part 2)."
     exit 1
 fi
 
