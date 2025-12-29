@@ -1,4 +1,7 @@
 
+#!/bin/sh
+# finder.sh - Cuenta archivos y coincidencias de una cadena en un directorio
+# Compatible con BusyBox /bin/sh
 
 filesdir=$1
 echo "Debug: filesdir is '$filesdir'" >&2
@@ -25,7 +28,7 @@ fi
 num_files=$(find "$filesdir" -type f 2>/dev/null | wc -l)
 # imprimir los files encontrados
 echo $(find "$filesdir" -type f 2>/dev/null) >&2
-num_matches=$(grep -r --text --line-number -- "$searchstr" "$filesdir" 2>/dev/null | wc -l)
+num_matches=$(grep -r --text --line-number -- "$searchstr" "$fil:qesdir" 2>/dev/null | wc -l)
 
 echo "The number of files are $num_files and the number of matching lines are $num_matches"
 exit 0

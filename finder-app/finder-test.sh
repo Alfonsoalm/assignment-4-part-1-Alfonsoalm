@@ -35,7 +35,7 @@ echo "Writing ${NUMFILES} files containing string ${WRITESTR} to ${WRITEDIR}"
 rm -rf "${WRITEDIR}"
 
 # Detecta asignación actual
-assignment=$(cat ../conf/assignment.txt)
+assignment=$(cat conf/assignment.txt)
 
 # Si no es assignment1, crea el directorio (assignment2 lo requiere)
 if [ "${assignment}" != "assignment1" ]
@@ -63,7 +63,7 @@ do
 done
 
 # Ejecutar finder (script existente) para contar coincidencias
-OUTPUTSTRING=$(./finder.sh "${WRITEDIR}" "${WRITESTR}")
+OUTPUTSTRING=$(sh ./finder.sh "${WRITEDIR}" "${WRITESTR}")
 
 # remove temporary directories
 rm -rf /tmp/aeld-data
